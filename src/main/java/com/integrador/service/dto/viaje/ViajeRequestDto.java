@@ -20,10 +20,10 @@ public class ViajeRequestDto {
     private Date inicioViaje;
     private Date finViaje;
     private double costo;
-    private Monopatin monopatin;
+    private Long monopatinId;
     private Long cuentaId;
     private Long usuarioId;
-    private Parada paradaFinal;
+    private Long paradaFinalId;
     private double kmsRecorridos;
     private Long tiempoPausa; //en segundos
     private boolean pausaActiva;
@@ -50,8 +50,8 @@ public class ViajeRequestDto {
 	public double getCosto() {
 		return costo;
 	}
-	public Monopatin getMonopatin() {
-		return monopatin;
+	public Long getMonopatinId() {
+		return monopatinId;
 	}
 	public Long getUsuarioId() {
 		return usuarioId;
@@ -59,8 +59,8 @@ public class ViajeRequestDto {
 	public Long getCuentaId() {
 		return cuentaId;
 	}
-	public Parada getParadaFinal() {
-		return paradaFinal;
+	public Long getParadaFinalId() {
+		return paradaFinalId;
 	}
    
 

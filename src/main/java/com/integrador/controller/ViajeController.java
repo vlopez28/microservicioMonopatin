@@ -72,7 +72,7 @@ public class ViajeController {
         try {
             Viaje viaje = this.viajeService.update(id, request);
             ViajeResponseDto response = new ViajeResponseDto(viaje);
-
+         
             return ResponseEntity.status(HttpStatus.OK).body(response);
           
         } catch (Exception e) {

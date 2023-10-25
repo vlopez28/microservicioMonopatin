@@ -1,5 +1,7 @@
 package com.integrador.domain;
 
+import java.io.Serializable;
+
 import com.integrador.service.dto.monopatin.MonopatinRequestDto;
 
 import jakarta.persistence.Column;
@@ -15,7 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
-public class Monopatin {
+public class Monopatin implements Serializable{
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

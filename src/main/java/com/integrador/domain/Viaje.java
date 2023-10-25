@@ -75,13 +75,27 @@ public class Viaje implements Serializable{
 
 
 
+public Viaje(Date inicioViaje, Date finViaje, double costo, Monopatin monopatin, Long usuarioId, Long cuentaId,
+		Parada paradaFinal, double kmsRecorridos, Long tiempoPausa, boolean pausaActiva) {
+	this.inicioViaje = inicioViaje;
+	this.finViaje = finViaje;
+	this.costo = costo;
+	this.monopatin = monopatin;
+	this.usuarioId = usuarioId;
+	this.cuentaId = cuentaId;
+	this.paradaFinal = paradaFinal;
+	this.kmsRecorridos = kmsRecorridos;
+	this.tiempoPausa = tiempoPausa;
+	this.pausaActiva = pausaActiva;
+}
+
+
+
 public Viaje(ViajeRequestDto request){
        this.inicioViaje = request.getInicioViaje();
        this.finViaje=request.getFinViaje();
        this.cuentaId = request.getCuentaId();
        this.usuarioId = request.getUsuarioId();
-       this.monopatin = request.getMonopatin();
-       this.paradaFinal = request.getParadaFinal();
        this.costo = request.getCosto();
        this.kmsRecorridos = request.getKmsRecorridos();
        this.tiempoPausa = request.getTiempoPausa();
