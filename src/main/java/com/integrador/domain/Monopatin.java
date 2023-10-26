@@ -10,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -34,22 +35,18 @@ public class Monopatin implements Serializable{
     @Column
     private boolean disponible;
     
-    
-
-    public boolean isDisponible() {
-		return disponible;
-	}
-
-
-
-	public void setDisponible(boolean disponible) {
-		this.disponible = disponible;
-	}
-
-	//va aumentando a cada viaje
-    @Column
+    @Column 
     private double kmsRecorridos;
+    
+    //va aumentando a cada viaje, cuando entra a ment se setea a cero
+    
+    @Column 
+    private double kmsMant;
+//definimos q a los 100km se le haga mant
+    @Transient
+    private double cantKmParaMant = 100;
 
+    
     //va aumentando a cada viaje
     @Column
     private Long tiempoUsoTotal; //en segundos
@@ -61,24 +58,56 @@ public class Monopatin implements Serializable{
     @Column
     private Long cantidadViajes;
 
+
+	public Monopatin() {
+	
+	}
+    
+    
     public Monopatin(MonopatinRequestDto request) {
         this.ubicacion = request.getUbicacion();
         this.estado = request.getEstado();
         this.disponible = request.isDisponible();
         this.kmsRecorridos = request.getKmsRecorridos();
+        this.kmsMant = request.getkmsMantenimiento();
         this.tiempoUsoTotal = request.getTiempoUsoTotal();
         this.tiempoPausado = request.getTiempoPausado();
         this.cantidadViajes = request.getCantidadViajes();
     }
     
-    
+    public boolean necesitaMantenimiento() {
+    	return this.cantKmParaMant == this.kmsMant;
+    }
 
-	public Monopatin() {
-	
+	public double getKmsMant() {
+		return kmsMant;
 	}
 
 
 
+	public double getCantKmParaMant() {
+		return cantKmParaMant;
+	}
+
+
+
+	public void setKmsMant(double kmsMant) {
+		this.kmsMant = kmsMant;
+	}
+
+
+
+
+
+	 public boolean isDisponible() {
+			return disponible;
+		}
+
+
+
+	public void setDisponible(boolean disponible) {
+		this.disponible = disponible;
+	}
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -148,5 +177,15 @@ public class Monopatin implements Serializable{
 	public Long getTiempoUsoTotal() {
 		return tiempoUsoTotal;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Monopatin [id=" + id + ", ubicacion=" + ubicacion + ", estado=" + estado + ", disponible=" + disponible
+				+ ", kmsRecorridos=" + kmsRecorridos + ", kmsMant=" + kmsMant + ", cantKmParaMant=" + cantKmParaMant
+				+ ", tiempoUsoTotal=" + tiempoUsoTotal + ", tiempoPausado=" + tiempoPausado + ", cantidadViajes="
+				+ cantidadViajes + "]";
+	}
+	
     
 }

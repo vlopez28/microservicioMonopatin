@@ -48,6 +48,7 @@ public class MonopatinController {
   
     @PostMapping("")
     public ResponseEntity<?> save( @RequestBody @Validated MonopatinRequestDto request ){
+		 System.out.println(request);
         try {
         	return ResponseEntity.status(HttpStatus.OK).body(monopatinService.save(request));
         }catch(Exception e) {
@@ -69,7 +70,9 @@ public class MonopatinController {
 
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable Long id, @RequestBody @Validated MonopatinRequestDto request) {
-        try {
+		 System.out.println("up"+request);
+
+    	try {
             Monopatin monopatin = monopatinService.update(id, request);
             MonopatinResponseDto response = new MonopatinResponseDto(monopatin);
 

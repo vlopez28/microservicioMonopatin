@@ -25,6 +25,7 @@ public class MonopatinService {
 
 	 @Transactional
     public MonopatinResponseDto save(MonopatinRequestDto request ){
+		 System.out.println(request);
         Monopatin monopatin = new Monopatin(request);
         Monopatin result = this.monopatinRepository.save(monopatin);
         return new MonopatinResponseDto(result);
@@ -55,9 +56,11 @@ public class MonopatinService {
     public Monopatin update(Long id, MonopatinRequestDto request) {
         Monopatin monopatin = this.monopatinRepository.findById(id).orElseThrow(
                 () -> new NotFoundException("ID de monopatin inválido: " + id));
-        
+       
         monopatin.setCantidadViajes(request.getCantidadViajes());
         monopatin.setEstado(request.getEstado());
+        monopatin.setDisponible(request.isDisponible());
+        monopatin.setKmsMant(request.getkmsMantenimiento());
         monopatin.setKmsRecorridos(request.getKmsRecorridos());
         monopatin.setTiempoPausado(request.getTiempoPausado());
         monopatin.setTiempoUsoTotal(request.getTiempoUsoTotal());
