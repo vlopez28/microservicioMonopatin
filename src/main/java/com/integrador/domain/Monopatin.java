@@ -76,7 +76,7 @@ public class Monopatin implements Serializable{
     }
     
     public boolean necesitaMantenimiento() {
-    	return this.cantKmParaMant == this.kmsMant;
+    	return this.cantKmParaMant <= this.kmsMant;
     }
 
 	public double getKmsMant() {
