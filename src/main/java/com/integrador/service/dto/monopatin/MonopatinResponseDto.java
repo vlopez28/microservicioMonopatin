@@ -21,6 +21,7 @@ public class MonopatinResponseDto {
 	private final Long id;
     private final GPS ubicacion;
 	private final String estado;
+	private final boolean disponible;
 	private final double kmsRecorridos;
 	private final Long tiempoUsoTotal;
     private final Long tiempoPausado;
@@ -30,6 +31,7 @@ public class MonopatinResponseDto {
         this.id = m.getId();
         this.ubicacion = m.getUbicacion();
         this.estado = m.getEstado();
+        this.disponible = m.isDisponible();
         this.kmsRecorridos = m.getKmsRecorridos();
         this.tiempoUsoTotal = m.getTiempoUsoTotal();
         this.tiempoPausado = m.getTiempoPausado();

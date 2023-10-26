@@ -30,8 +30,23 @@ public class Monopatin implements Serializable{
     //esta en uso-disponible-enMantenimiento
     @Column
     private String estado;
+    
+    @Column
+    private boolean disponible;
+    
+    
 
-    //va aumentando a cada viaje
+    public boolean isDisponible() {
+		return disponible;
+	}
+
+
+
+	public void setDisponible(boolean disponible) {
+		this.disponible = disponible;
+	}
+
+	//va aumentando a cada viaje
     @Column
     private double kmsRecorridos;
 
@@ -49,6 +64,7 @@ public class Monopatin implements Serializable{
     public Monopatin(MonopatinRequestDto request) {
         this.ubicacion = request.getUbicacion();
         this.estado = request.getEstado();
+        this.disponible = request.isDisponible();
         this.kmsRecorridos = request.getKmsRecorridos();
         this.tiempoUsoTotal = request.getTiempoUsoTotal();
         this.tiempoPausado = request.getTiempoPausado();

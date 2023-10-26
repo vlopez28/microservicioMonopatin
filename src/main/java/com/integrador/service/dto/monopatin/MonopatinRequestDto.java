@@ -18,6 +18,7 @@ public class MonopatinRequestDto {
 	private Long idMonopatin;
     private GPS ubicacion;
     private String estado;
+    private boolean disponible;
     private double kmsRecorridos;
     private Long tiempoUsoTotal;
     private Long tiempoPausado;
@@ -27,7 +28,13 @@ public class MonopatinRequestDto {
 		return cantidadViajes;
 	}
     
-    public Long getTiempoPausado() {
+    
+    public boolean isDisponible() {
+		return disponible;
+	}
+
+
+	public Long getTiempoPausado() {
 		return tiempoPausado;
 	}
 	
