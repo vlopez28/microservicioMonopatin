@@ -45,6 +45,16 @@ public class ViajeController {
 	        }
 	        
 	  }
+	 
+	 @GetMapping("/usuarios/{id}")
+	   public ResponseEntity<?> conectarUsuario(@PathVariable Long id){
+	        try{
+	            return ResponseEntity.status(HttpStatus.OK).body(this.viajeService.conectarUsuario(id));
+	        }catch (Exception e){
+	            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error. Usuario inexistente");
+	        }
+	        
+	  }
 
 
     @PostMapping("")

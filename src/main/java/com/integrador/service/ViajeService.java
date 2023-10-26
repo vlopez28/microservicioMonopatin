@@ -1,10 +1,19 @@
 package com.integrador.service;
 
+import java.net.http.HttpHeaders;
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.integrador.domain.Parada;
 import com.integrador.domain.Viaje;
+import com.integrador.domain.clases.Usuario;
 import com.integrador.repository.MonopatinRepository;
 import com.integrador.repository.ParadaRepository;
 import com.integrador.repository.ViajeRepository;
@@ -16,14 +25,40 @@ import jakarta.transaction.Transactional;
 @Service
 public class ViajeService {
 	
+	@Autowired
+	private final RestTemplate restTemplate;
+	
 	private ViajeRepository viajeRepository;
 	private MonopatinRepository monopatinRepository;
 	private ParadaRepository paradaRepository;
 	
-	public ViajeService(ViajeRepository viajeRepository, MonopatinRepository monopatinRepository, ParadaRepository paradaRepository) {
+	public ViajeService(ViajeRepository viajeRepository, MonopatinRepository monopatinRepository, ParadaRepository paradaRepository, RestTemplate restTemplate) {
 		this.viajeRepository = viajeRepository;
 		this.monopatinRepository = monopatinRepository;
 		this.paradaRepository = paradaRepository;
+		this.restTemplate = restTemplate;
+		
+	}
+	
+	public ResponseEntity conectarUsuario(Long idUsuario) {
+		
+		//HttpHeaders headers = new HttpHeaders();
+		HttpEntity<	Usuario> requestEntity = new HttpEntity<>(null);
+		
+		ResponseEntity<Usuario> response = restTemplate.exchange(
+				"http://localhost:8080/api/usuarios/" + idUsuario,
+				HttpMethod.GET,
+				requestEntity,
+				
+				new ParameterizedTypeReference<Usuario>() {}
+				);		
+//		if(response.getStatusCode().is2xxSuccessful()) {
+//			Usuario u = response.getBody();
+//			HttpEntity<Usuario> requestEntity2 = new HttpEntity<>(u, headers);
+//			ResponseEntity<Usuario> response2 = 
+//		}
+		//headers.setContentType(MediaType.APPLICATION_JSON);
+		return response;		
 		
 	}
 	
