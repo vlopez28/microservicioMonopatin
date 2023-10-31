@@ -21,13 +21,20 @@ public class MonopatinRequestDto {
     private boolean disponible;
     private double kmsRecorridos;
     private double kmsMantenimiento;
+    private double tiempoUsoParaMant;
     private Long tiempoUsoTotal;
     private Long tiempoPausado;
     private Long cantidadViajes;
     
     
     
-    public double getkmsMantenimiento() {
+
+	public double getTiempoUsoParaMant() {
+		return tiempoUsoParaMant;
+	}
+
+
+	public double getKmsMantenimiento() {
 		return kmsMantenimiento;
 	}
 

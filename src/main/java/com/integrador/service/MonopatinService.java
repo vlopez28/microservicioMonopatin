@@ -2,11 +2,13 @@ package com.integrador.service;
 
 
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.integrador.service.dto.monopatin.*;
+import com.integrador.service.dto.monopatinConViajes.MonopatinConViajesResponseDto;
 import com.integrador.domain.Monopatin;
 import com.integrador.repository.MonopatinRepository;
 import com.integrador.service.exception.*;
@@ -23,7 +25,7 @@ public class MonopatinService {
 	 }
 	 
 
-	 @Transactional
+	@Transactional
     public MonopatinResponseDto save(MonopatinRequestDto request ){
 		 System.out.println(request);
         Monopatin monopatin = new Monopatin(request);
@@ -31,9 +33,6 @@ public class MonopatinService {
         return new MonopatinResponseDto(result);
     }
 	    
-	    
-  
-
     @Transactional
     public List<MonopatinResponseDto> findAll(){
         return this.monopatinRepository.findAll().stream().map( MonopatinResponseDto::new ).toList();
@@ -60,12 +59,39 @@ public class MonopatinService {
         monopatin.setCantidadViajes(request.getCantidadViajes());
         monopatin.setEstado(request.getEstado());
         monopatin.setDisponible(request.isDisponible());
-        monopatin.setKmsMant(request.getkmsMantenimiento());
+        monopatin.setKmsMant(request.getKmsMantenimiento());
         monopatin.setKmsRecorridos(request.getKmsRecorridos());
+        monopatin.setTiempoUsoParaMant(request.getTiempoUsoParaMant());
         monopatin.setTiempoPausado(request.getTiempoPausado());
         monopatin.setTiempoUsoTotal(request.getTiempoUsoTotal());
         monopatin.setUbicacion(request.getUbicacion());
         return this.monopatinRepository.save(monopatin);
     }
+    
+    @Transactional
+    public List<MonopatinResponseDto>  getMonopatinesPorKm(Long cantKm){
+    	return this.monopatinRepository.getMonopatinesPorKm(cantKm);
+    }
+    
+    @Transactional
+    public List<MonopatinResponseDto>  getMonopatinesPorTiempoSinPausa(Long cantTiempo){
+    	return this.monopatinRepository.getMonopatinesPorTiempoSinPausa(cantTiempo);
+    }
+    
+    @Transactional
+    public List<MonopatinResponseDto>  getMonopatinesPorTiempoConPausa(Long cantTiempo){
+    	return this.monopatinRepository.getMonopatinesPorTiempoConPausa(cantTiempo);
+    }
+    
+    @Transactional
+    public List<MonopatinConViajesResponseDto> getMonopatinesConViajes(Long cantViajes, Integer anio){
+    	return this.monopatinRepository.getMonopatinesConViajes(cantViajes, anio);
+    }
+    @Transactional
+    public List<MonopatinesCantidadResponseDto> getMonopatinesEnOperacionMantenimiento(){
+    	return this.monopatinRepository.getMonopatinesEnOperacionMantenimiento();
+
+    }
+    
 
 }

@@ -45,8 +45,13 @@ public class Monopatin implements Serializable{
 //definimos q a los 100km se le haga mant
     @Transient
     private double cantKmParaMant = 100;
-
     
+  //definimos q a los 10000segundos se le haga mannt
+    @Transient
+    private double cantTiempoUsoParaMant = 10000;
+
+    @Column
+    private double tiempoUsoParaMant;
     //va aumentando a cada viaje
     @Column
     private Long tiempoUsoTotal; //en segundos
@@ -69,20 +74,47 @@ public class Monopatin implements Serializable{
         this.estado = request.getEstado();
         this.disponible = request.isDisponible();
         this.kmsRecorridos = request.getKmsRecorridos();
-        this.kmsMant = request.getkmsMantenimiento();
+        this.kmsMant = request.getKmsMantenimiento();
+        this.tiempoUsoParaMant = request.getTiempoUsoParaMant();
         this.tiempoUsoTotal = request.getTiempoUsoTotal();
         this.tiempoPausado = request.getTiempoPausado();
         this.cantidadViajes = request.getCantidadViajes();
     }
     
-    public boolean necesitaMantenimiento() {
-    	return this.cantKmParaMant <= this.kmsMant;
-    }
+    
+    
+    public double getCantTiempoUsoParaMant() {
+		return cantTiempoUsoParaMant;
+	}
 
+
+	public void setCantTiempoUsoParaMant(double cantTiempoUsoParaMant) {
+		this.cantTiempoUsoParaMant = cantTiempoUsoParaMant;
+	}
+
+
+	public boolean necesitaMantenimiento() {
+    	return (this.cantKmParaMant <= this.kmsMant || 
+    			this.cantTiempoUsoParaMant <= this.tiempoUsoParaMant);
+    }
+    
 	public double getKmsMant() {
 		return kmsMant;
 	}
 
+	public double getTiempoUsoParaMant() {
+		return tiempoUsoParaMant;
+	}
+
+
+	public void setCantKmParaMant(double cantKmParaMant) {
+		this.cantKmParaMant = cantKmParaMant;
+	}
+
+
+	public void setTiempoUsoParaMant(double tiempoUsoParaMant) {
+		this.tiempoUsoParaMant = tiempoUsoParaMant;
+	}
 
 
 	public double getCantKmParaMant() {
@@ -94,10 +126,6 @@ public class Monopatin implements Serializable{
 	public void setKmsMant(double kmsMant) {
 		this.kmsMant = kmsMant;
 	}
-
-
-
-
 
 	 public boolean isDisponible() {
 			return disponible;

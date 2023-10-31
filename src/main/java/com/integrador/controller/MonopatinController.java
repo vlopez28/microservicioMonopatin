@@ -1,5 +1,6 @@
 package com.integrador.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.integrador.domain.Monopatin;
 import com.integrador.service.MonopatinService;
 import com.integrador.service.dto.monopatin.*;
+import com.integrador.service.dto.monopatinConViajes.MonopatinConViajesResponseDto;
+
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -82,6 +85,62 @@ public class MonopatinController {
         	return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró el monopatin con el ID proporcionado.");
         }
     }
+    
+    //traer monopatines por km, trae los monopatines con mas de cierta cant de km
+    @GetMapping("/porKm/{cantKm}")
+	   public ResponseEntity<?> getMonopatinesPorKm(@PathVariable Long cantKm){
+	        try{
+	            return ResponseEntity.status(HttpStatus.OK).body(monopatinService.getMonopatinesPorKm(cantKm));
+	        }catch (Exception e){
+	            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error, revise los campos nuevamente");
+	        }
+	        
+	  }
 	
+  //traer monopatines por tiempo sin pausa, trae los monopatines con mas de cierto tiempo sin contar las pausas
+    @GetMapping("/porTiempoSinPausa/{cantTiempo}")
+	   public ResponseEntity<?> getMonopatinesPorTiempoSinPausa(@PathVariable Long cantTiempo){
+	        try{
+	            return ResponseEntity.status(HttpStatus.OK).body(monopatinService.getMonopatinesPorTiempoSinPausa(cantTiempo));
+	        }catch (Exception e){
+	            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error, revise los campos nuevamente");
+	        }
+	        
+	  }
+    
+  //trae los monopatines con mas de cierto tiempo contando las pausas
+    @GetMapping("/porTiempoConPausa/{cantTiempo}")
+	   public ResponseEntity<?> getMonopatinesPorTiempoConPausa(@PathVariable Long cantTiempo){
+	        try{
+	            return ResponseEntity.status(HttpStatus.OK).body(monopatinService.getMonopatinesPorTiempoConPausa(cantTiempo));
+	        }catch (Exception e){
+	            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error, revise los campos nuevamente");
+	        }
+	        
+	  }
 
+  //trae los monopatines con cierta cant de viajes en un anio dado
+    @GetMapping("/conViajes/{cantViajes}/{anio}")
+	   public List<MonopatinConViajesResponseDto> getMonopatinesConViajes(@PathVariable Long cantViajes, @PathVariable Integer anio){
+	        try{
+	        	return this.monopatinService.getMonopatinesConViajes(cantViajes, anio);
+	        }catch (Exception e){
+	             e.printStackTrace();
+	             return null;
+	        }
+	        
+	  }
+    
+  //trae los monopatines con cierta cant de viajes en un anio dado
+    @GetMapping("/enOperacionMantenimiento")
+	   public List<MonopatinesCantidadResponseDto> getMonopatinesEnOperacionMantenimiento(){
+	        try{
+	        	return this.monopatinService.getMonopatinesEnOperacionMantenimiento();
+	        }catch (Exception e){
+	             e.printStackTrace();
+	             return null;
+	        }
+	        
+	  }
+    
 }

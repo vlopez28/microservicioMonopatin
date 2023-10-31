@@ -24,6 +24,7 @@ public class MonopatinResponseDto {
 	private final boolean disponible;
 	private final double kmsRecorridos;
 	private final double kmsMantenimiento;
+	private final double tiempoUsoParaMant;
 	private final Long tiempoUsoTotal;
     private final Long tiempoPausado;
     private final Long cantidadViajes;
@@ -36,6 +37,7 @@ public class MonopatinResponseDto {
         this.disponible = m.isDisponible();
         this.kmsRecorridos = m.getKmsRecorridos();
         this.kmsMantenimiento = m.getKmsMant();
+        this.tiempoUsoParaMant = m.getTiempoUsoParaMant();
         this.tiempoUsoTotal = m.getTiempoUsoTotal();
         this.tiempoPausado = m.getTiempoPausado();
         this.cantidadViajes = m.getCantidadViajes();
