@@ -131,16 +131,23 @@ public class MonopatinController {
 	        
 	  }
     
-  //trae los monopatines con cierta cant de viajes en un anio dado
+ // trae los monopatines en operacion vs en manteniminetno
     @GetMapping("/enOperacionMantenimiento")
-	   public List<MonopatinesCantidadResponseDto> getMonopatinesEnOperacionMantenimiento(){
-	        try{
-	        	return this.monopatinService.getMonopatinesEnOperacionMantenimiento();
-	        }catch (Exception e){
-	             e.printStackTrace();
-	             return null;
-	        }
-	        
+	   public MonopatinesCantidadResponseDto getMonopatinesEnOperacionMantenimiento(){
+    	
+    	return this.monopatinService.getMonopatinesEnOperacionMantenimiento();
+
 	  }
+    
+    @GetMapping("/obtenerMonopatinesCerca/{latitud}/{longitud}")
+   	public List<MonopatinesCercaResponseDto> getMonopatinesCerca(@PathVariable double latitud, @PathVariable double longitud){
+   		try{
+   			return this.monopatinService.getMonopatinesCerca(latitud, longitud);
+   		  }catch(Exception e){
+   				e.printStackTrace();
+   				return null;
+   		  }
+   	  }
+
     
 }

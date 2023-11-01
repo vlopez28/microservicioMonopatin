@@ -89,6 +89,16 @@ public class ViajeController {
         	return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró el viaje con el ID proporcionado.");
         }
     }
+    
+    @GetMapping("/facturacion/{mesInicio}/{mesFin}")
+	   public ResponseEntity<?> facturacionEnMeses(@PathVariable Integer mesInicio, @PathVariable Integer mesFin){
+	        try{
+	            return ResponseEntity.status(HttpStatus.OK).body(this.viajeService.facturacionEnMeses(mesInicio, mesFin));
+	        }catch (Exception e){
+	            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error. Facturacioon inexistente");
+	        }
+	        
+	  }
 	
 
 }

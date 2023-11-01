@@ -12,8 +12,8 @@ import lombok.RequiredArgsConstructor;
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 public class MonopatinesCantidadResponseDto {
 	
-	private final Long cantidadMonopatinesOperacion;
-	private final Long cantidadMonopatinesMantenimiento;
+	private Long cantidadMonopatinesOperacion;
+	private Long cantidadMonopatinesMantenimiento;
 	
 	public MonopatinesCantidadResponseDto(Long cantidadMonopatinesOperacion, Long cantidadMonopatinesMantenimiento) {
 		this.cantidadMonopatinesOperacion = cantidadMonopatinesOperacion;

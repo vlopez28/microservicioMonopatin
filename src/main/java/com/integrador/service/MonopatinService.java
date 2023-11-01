@@ -5,6 +5,7 @@ package com.integrador.service;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.integrador.service.dto.monopatin.*;
@@ -88,9 +89,14 @@ public class MonopatinService {
     	return this.monopatinRepository.getMonopatinesConViajes(cantViajes, anio);
     }
     @Transactional
-    public List<MonopatinesCantidadResponseDto> getMonopatinesEnOperacionMantenimiento(){
+    public MonopatinesCantidadResponseDto getMonopatinesEnOperacionMantenimiento(){
     	return this.monopatinRepository.getMonopatinesEnOperacionMantenimiento();
 
+    }
+    
+    @Transactional
+    public List<MonopatinesCercaResponseDto> getMonopatinesCerca(double latitud, double longitud){
+         return this.monopatinRepository.getMonopatinesCerca(latitud, longitud);
     }
     
 

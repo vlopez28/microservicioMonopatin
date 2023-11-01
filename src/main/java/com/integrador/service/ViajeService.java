@@ -52,12 +52,7 @@ public class ViajeService {
 				
 				new ParameterizedTypeReference<Usuario>() {}
 				);		
-//		if(response.getStatusCode().is2xxSuccessful()) {
-//			Usuario u = response.getBody();
-//			HttpEntity<Usuario> requestEntity2 = new HttpEntity<>(u, headers);
-//			ResponseEntity<Usuario> response2 = 
-//		}
-		//headers.setContentType(MediaType.APPLICATION_JSON);
+
 		return response;		
 		
 	}
@@ -121,5 +116,14 @@ public class ViajeService {
        viaje.setUsuarioId(request.getUsuarioId());
        return this.viajeRepository.save(viaje);
    }
+   
+   @Transactional
+   public double facturacionEnMeses(Integer mesInicio, Integer mesFin) {
+	   System.out.println(mesInicio+""+ mesFin);
+
+	   System.out.println(this.viajeRepository.facturacion(mesInicio, mesFin));
+	   return this.viajeRepository.facturacion(mesInicio, mesFin);
+   }
+   
 
 }

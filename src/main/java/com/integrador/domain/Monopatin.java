@@ -15,7 +15,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-@NoArgsConstructor
 @Data
 @Entity
 public class Monopatin implements Serializable{
@@ -32,6 +31,7 @@ public class Monopatin implements Serializable{
     @Column
     private String estado;
     
+    //no esta en mantenimiento
     @Column
     private boolean disponible;
     
@@ -62,6 +62,8 @@ public class Monopatin implements Serializable{
     
     @Column
     private Long cantidadViajes;
+    
+  //  private double longitud; 
 
 
 	public Monopatin() {
@@ -79,6 +81,7 @@ public class Monopatin implements Serializable{
         this.tiempoUsoTotal = request.getTiempoUsoTotal();
         this.tiempoPausado = request.getTiempoPausado();
         this.cantidadViajes = request.getCantidadViajes();
+     //   this.longitud = request.getUbicacion().getLongitud();
     }
     
     
