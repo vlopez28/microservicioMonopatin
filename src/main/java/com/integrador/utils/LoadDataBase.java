@@ -121,7 +121,6 @@ public class LoadDataBase {
 			ViajeRequestDto vr8 = new ViajeRequestDto(fechaInicio8, fechaFin8, 462, (long)8, (long)4, (long)3, (long)4, 4, 420, false);
 			ViajeRequestDto vr9 = new ViajeRequestDto(fechaInicio9, fechaFin9, 264, (long)9, (long)1, (long)1, (long)1, 7, 620, true);
 			ViajeRequestDto vr10 = new ViajeRequestDto(fechaInicio10, fechaFin10, 320, (long)10, (long)2, (long)1, (long)2, 13, 420, true);
-			ViajeRequestDto vr11 = new ViajeRequestDto(fechaInicio11, fechaFin11, 293, (long)11, (long)5, (long)4, (long)3, 8, 842, true);
 	
 			ViajeService vs = new ViajeService(viajeRepository, monopatinRepository, paradaRepository);
 			
@@ -135,7 +134,6 @@ public class LoadDataBase {
 			vs.save(vr8);
 			vs.save(vr9);
 			vs.save(vr10);
-			vs.save(vr11);
 			
 			
 		};

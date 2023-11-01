@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @Getter
-@RequiredArgsConstructor
 public class NotFoundException extends RuntimeException {
 
     private final String message;
@@ -17,4 +16,10 @@ public class NotFoundException extends RuntimeException {
 		this.message = message;
 		// TODO Auto-generated constructor stub
 	}
+
+	public NotFoundException() {
+		super();
+		this.message = String.format( "La entidad %s con id %s no existe.");
+	}
+	
 }

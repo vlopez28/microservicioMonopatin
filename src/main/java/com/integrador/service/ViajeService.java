@@ -26,14 +26,14 @@ import jakarta.transaction.Transactional;
 public class ViajeService {
 	
 	@Autowired
-	private final RestTemplate restTemplate;
+	private RestTemplate restTemplate;
 	
 	private ViajeRepository viajeRepository;
 	private MonopatinRepository monopatinRepository;
 	private ParadaRepository paradaRepository;
 	
 	public ViajeService(ViajeRepository viajeRepository, MonopatinRepository monopatinRepository, ParadaRepository paradaRepository) {
-		this.restTemplate = new RestTemplate();
+	//	this.restTemplate = new RestTemplate();
 		this.viajeRepository = viajeRepository;
 		this.monopatinRepository = monopatinRepository;
 		this.paradaRepository = paradaRepository;		

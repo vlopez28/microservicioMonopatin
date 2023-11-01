@@ -31,7 +31,7 @@ public class ViajeRequestDto {
     private boolean pausaActiva;
     
     
-    public ViajeRequestDto(Timestamp inicioViaje, Timestamp finViaje, double costo, Long monopatinId, Long cuentaId,
+    public ViajeRequestDto(Date inicioViaje, Date finViaje, double costo, Long monopatinId, Long cuentaId,
 			Long usuarioId, Long paradaFinalId, double kmsRecorridos, int tiempoPausa, boolean pausaActiva) {
 		this.inicioViaje = inicioViaje;
 		this.finViaje = finViaje;
