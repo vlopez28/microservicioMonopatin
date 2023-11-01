@@ -32,12 +32,11 @@ public class ViajeService {
 	private MonopatinRepository monopatinRepository;
 	private ParadaRepository paradaRepository;
 	
-	public ViajeService(ViajeRepository viajeRepository, MonopatinRepository monopatinRepository, ParadaRepository paradaRepository, RestTemplate restTemplate) {
+	public ViajeService(ViajeRepository viajeRepository, MonopatinRepository monopatinRepository, ParadaRepository paradaRepository) {
+		this.restTemplate = new RestTemplate();
 		this.viajeRepository = viajeRepository;
 		this.monopatinRepository = monopatinRepository;
-		this.paradaRepository = paradaRepository;
-		this.restTemplate = restTemplate;
-		
+		this.paradaRepository = paradaRepository;		
 	}
 	
 	public ResponseEntity conectarUsuario(Long idUsuario) {
@@ -46,7 +45,7 @@ public class ViajeService {
 		HttpEntity<	Usuario> requestEntity = new HttpEntity<>(null);
 		
 		ResponseEntity<Usuario> response = restTemplate.exchange(
-				"http://localhost:8080/api/usuarios/" + idUsuario,
+				"http://localhost:8005/api/usuarios/" + idUsuario,
 				HttpMethod.GET,
 				requestEntity,
 				
@@ -59,7 +58,7 @@ public class ViajeService {
 	
 	
 	 @Transactional
-   public ViajeResponseDto save(ViajeRequestDto request ){
+   public ViajeResponseDto save(ViajeRequestDto request){
 		 
 		 final var m = this.monopatinRepository.findById(request.getMonopatinId())
 					.orElseThrow(() -> new NotFoundException(String.format("No existe el monopatin con id%s", request.getMonopatinId())));
@@ -67,7 +66,8 @@ public class ViajeService {
 	 					.orElseThrow( () -> new NotFoundException(String.format("No existe la parada con id %s", request.getParadaFinalId() ) ) );
 	     	
 	    Viaje viaje = new Viaje(request.getInicioViaje(), request.getFinViaje(), request.getCosto(), m, request.getUsuarioId(), request.getCuentaId(),
-	    		   p, request.getKmsRecorridos(), request.getTiempoPausa(), request.isPausaActiva());
+	    		   p, request.getKmsRecorridos(), (long) request.getTiempoPausa(), request.isPausaActiva());
+	    
 	    Viaje result = this.viajeRepository.save(viaje);
 	       return new ViajeResponseDto(result);
    }

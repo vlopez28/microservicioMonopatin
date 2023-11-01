@@ -22,12 +22,24 @@ public class MonopatinRequestDto {
     private double kmsRecorridos;
     private double kmsMantenimiento;
     private double tiempoUsoParaMant;
-    private Long tiempoUsoTotal;
-    private Long tiempoPausado;
-    private Long cantidadViajes;
+    private int tiempoUsoTotal;
+    private int tiempoPausado;
+    private int cantidadViajes;
     
     
     
+
+    public MonopatinRequestDto(GPS ubicacion, String estado, boolean disponible, double kmsRecorridos, double kmsMantenimiento, int tiempoUsoTotal, int tiempoPausado, int cantidadViajes) {
+		this.ubicacion = ubicacion;
+		this.estado = estado;
+		this.disponible = disponible;
+		this.kmsRecorridos = kmsRecorridos;
+		this.kmsMantenimiento = kmsMantenimiento;
+		this.tiempoUsoTotal = tiempoUsoTotal;
+		this.tiempoPausado = tiempoPausado;
+		this.cantidadViajes = cantidadViajes;
+	}
+
 
 	public double getTiempoUsoParaMant() {
 		return tiempoUsoParaMant;
@@ -39,17 +51,15 @@ public class MonopatinRequestDto {
 	}
 
 
-	public Long getCantidadViajes() {
+	public int getCantidadViajes() {
 		return cantidadViajes;
 	}
-    
     
     public boolean isDisponible() {
 		return disponible;
 	}
 
-
-	public Long getTiempoPausado() {
+	public int getTiempoPausado() {
 		return tiempoPausado;
 	}
 	
@@ -60,13 +70,16 @@ public class MonopatinRequestDto {
 	public GPS getUbicacion() {
 		return ubicacion;
 	}
+	
 	public String getEstado() {
 		return estado;
 	}
+	
 	public double getKmsRecorridos() {
 		return kmsRecorridos;
 	}
-	public Long getTiempoUsoTotal() {
+	
+	public int getTiempoUsoTotal() {
 		return tiempoUsoTotal;
 	}
     

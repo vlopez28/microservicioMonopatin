@@ -1,6 +1,7 @@
 package com.integrador.domain;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
 import com.integrador.domain.Parada;
@@ -62,7 +63,7 @@ public class Viaje implements Serializable{
     private double kmsRecorridos;
     
     @Column
-    private Long tiempoPausa; //en segundos
+    private double tiempoPausa; //en segundos
     
     @Column
     private boolean pausaActiva;
@@ -75,7 +76,7 @@ public class Viaje implements Serializable{
 
 
 public Viaje(Date inicioViaje, Date finViaje, double costo, Monopatin monopatin, Long usuarioId, Long cuentaId,
-		Parada paradaFinal, double kmsRecorridos, Long tiempoPausa, boolean pausaActiva) {
+		Parada paradaFinal, double kmsRecorridos, double tiempoPausa, boolean pausaActiva) {
 	this.inicioViaje = inicioViaje;
 	this.finViaje = finViaje;
 	this.costo = costo;
@@ -157,7 +158,7 @@ public Viaje(ViajeRequestDto request){
 	
 	
 	
-	public Long getTiempoPausa() {
+	public double getTiempoPausa() {
 		return tiempoPausa;
 	}
 	
@@ -214,7 +215,7 @@ public Viaje(ViajeRequestDto request){
 	}
 	
 	
-	public void setTiempoPausa(Long tiempoPausa) {
+	public void setTiempoPausa(double tiempoPausa) {
 		this.tiempoPausa = tiempoPausa;
 	}
 	

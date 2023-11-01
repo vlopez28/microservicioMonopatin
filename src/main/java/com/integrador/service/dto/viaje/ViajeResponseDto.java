@@ -26,7 +26,7 @@ public class ViajeResponseDto {
     private final Long usuarioId;
     private final Parada paradaFinal;
     private final double kmsRecorridos;
-    private final Long tiempoPausa; //en segundos
+    private final double tiempoPausa; //en segundos
     private final boolean pausaActiva;
     
     

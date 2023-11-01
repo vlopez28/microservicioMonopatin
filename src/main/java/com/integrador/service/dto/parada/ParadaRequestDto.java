@@ -14,6 +14,12 @@ public class ParadaRequestDto {
 	 private Long id;
 	 private String nombre;
 	 private GPS ubicacion;
+	 
+	public ParadaRequestDto(String nombre, GPS ubicacion) {
+		this.nombre =  nombre;
+		this.ubicacion = ubicacion;
+	}
+	
 	public Long getId() {
 		return id;
 	}

@@ -54,14 +54,14 @@ public class Monopatin implements Serializable{
     private double tiempoUsoParaMant;
     //va aumentando a cada viaje
     @Column
-    private Long tiempoUsoTotal; //en segundos
+    private int tiempoUsoTotal; //en segundos
     
     //iria un tiempo pausado???
     @Column
-    private Long tiempoPausado; //en segundos
+    private int tiempoPausado; //en segundos
     
     @Column
-    private Long cantidadViajes;
+    private int cantidadViajes;
     
   //  private double longitud; 
 
@@ -163,19 +163,19 @@ public class Monopatin implements Serializable{
 
 
 
-	public void setTiempoUsoTotal(Long tiempoUsoTotal) {
+	public void setTiempoUsoTotal(int tiempoUsoTotal) {
 		this.tiempoUsoTotal = tiempoUsoTotal;
 	}
 
 
 
-	public void setTiempoPausado(Long tiempoPausado) {
+	public void setTiempoPausado(int tiempoPausado) {
 		this.tiempoPausado = tiempoPausado;
 	}
 
 
 
-	public void setCantidadViajes(Long cantidadViajes) {
+	public void setCantidadViajes(int cantidadViajes) {
 		this.cantidadViajes = cantidadViajes;
 	}
 
@@ -185,11 +185,11 @@ public class Monopatin implements Serializable{
 		return id;
 	}
 	
-	public Long getTiempoPausado() {
+	public int getTiempoPausado() {
 		return tiempoPausado;
 	}
 
-	public Long getCantidadViajes() {
+	public int getCantidadViajes() {
 		return cantidadViajes;
 	}
 
@@ -205,7 +205,7 @@ public class Monopatin implements Serializable{
 		return kmsRecorridos;
 	}
 
-	public Long getTiempoUsoTotal() {
+	public int getTiempoUsoTotal() {
 		return tiempoUsoTotal;
 	}
 
