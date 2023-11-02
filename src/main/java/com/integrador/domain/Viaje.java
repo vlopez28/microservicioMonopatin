@@ -75,23 +75,23 @@ public class Viaje implements Serializable{
 
 
 
-public Viaje(Date inicioViaje, Date finViaje, double costo, Monopatin monopatin, Long usuarioId, Long cuentaId,
+   public Viaje(Date inicioViaje, Date finViaje, double costo, Monopatin monopatin, Long usuarioId, Long cuentaId,
 		Parada paradaFinal, double kmsRecorridos, double tiempoPausa, boolean pausaActiva) {
-	this.inicioViaje = inicioViaje;
-	this.finViaje = finViaje;
-	this.costo = costo;
-	this.monopatin = monopatin;
-	this.usuarioId = usuarioId;
-	this.cuentaId = cuentaId;
-	this.paradaFinal = paradaFinal;
-	this.kmsRecorridos = kmsRecorridos;
-	this.tiempoPausa = tiempoPausa;
-	this.pausaActiva = pausaActiva;
-}
+		this.inicioViaje = inicioViaje;
+		this.finViaje = finViaje;
+		this.costo = costo;
+		this.monopatin = monopatin;
+		this.usuarioId = usuarioId;
+		this.cuentaId = cuentaId;
+		this.paradaFinal = paradaFinal;
+		this.kmsRecorridos = kmsRecorridos;
+		this.tiempoPausa = tiempoPausa;
+		this.pausaActiva = pausaActiva;
+   }
 
 
 
-public Viaje(ViajeRequestDto request){
+   public Viaje(ViajeRequestDto request){
        this.inicioViaje = request.getInicioViaje();
        this.finViaje=request.getFinViaje();
        this.cuentaId = request.getCuentaId();
@@ -115,11 +115,9 @@ public Viaje(ViajeRequestDto request){
 	}
 	
 	
-	
 	public Date getFinViaje() {
 		return finViaje;
 	}
-	
 	
 	
 	public double getCosto() {
@@ -127,17 +125,14 @@ public Viaje(ViajeRequestDto request){
 	}
 	
 	
-	
 	public Monopatin getMonopatin() {
 		return monopatin;
 	}
 	
 	
-	
 	public Long getUsuarioId() {
 		return usuarioId;
 	}
-	
 	
 	
 	public Long getCuentaId() {
@@ -151,7 +146,6 @@ public Viaje(ViajeRequestDto request){
 	}
 	
 	
-	
 	public double getKmsRecorridos() {
 		return kmsRecorridos;
 	}
@@ -163,11 +157,9 @@ public Viaje(ViajeRequestDto request){
 	}
 	
 	
-	
 	public boolean isPausaActiva() {
 		return pausaActiva;
 	}
-
 
 
 	public void setId(Long id) {

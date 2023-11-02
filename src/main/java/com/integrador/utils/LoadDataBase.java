@@ -61,16 +61,16 @@ public class LoadDataBase {
 			
 			MonopatinService ms = new MonopatinService (monopatinRepository);
 			
-			ms.save(mr1);
-			ms.save(mr2);
-			ms.save(mr3);
-			ms.save(mr4);
-			ms.save(mr5);
-			ms.save(mr6);
-			ms.save(mr7);
-			ms.save(mr8);
-			ms.save(mr9);
-			ms.save(mr10);
+//			ms.save(mr1);
+//			ms.save(mr2);
+//			ms.save(mr3);
+//			ms.save(mr4);
+//			ms.save(mr5);
+//			ms.save(mr6);
+//			ms.save(mr7);
+//			ms.save(mr8);
+//			ms.save(mr9);
+//			ms.save(mr10);
 			
 			ParadaRequestDto pr1 = new ParadaRequestDto("parada 1", gps1);
 			ParadaRequestDto pr2 = new ParadaRequestDto("parada 2", gps2);
@@ -79,10 +79,10 @@ public class LoadDataBase {
 			
 			ParadaService ps = new ParadaService(paradaRepository);
 
-			ps.save(pr1);
-			ps.save(pr2);
-			ps.save(pr3);
-			ps.save(pr4);
+//			ps.save(pr1);
+//			ps.save(pr2);
+//			ps.save(pr3);
+//			ps.save(pr4);
 			
 			
 			Timestamp fechaInicio1 = Timestamp.valueOf("2023-08-24 10:10:10.0");
@@ -124,16 +124,16 @@ public class LoadDataBase {
 	
 			ViajeService vs = new ViajeService(viajeRepository, monopatinRepository, paradaRepository);
 			
-			vs.save(vr1);
-			vs.save(vr2);
-			vs.save(vr3);
-			vs.save(vr4);
-			vs.save(vr5);
-			vs.save(vr6);
-			vs.save(vr7);
-			vs.save(vr8);
-			vs.save(vr9);
-			vs.save(vr10);
+//			vs.save(vr1);
+//			vs.save(vr2);
+//			vs.save(vr3);
+//			vs.save(vr4);
+//			vs.save(vr5);
+//			vs.save(vr6);
+//			vs.save(vr7);
+//			vs.save(vr8);
+//			vs.save(vr9);
+//			vs.save(vr10);
 			
 			
 		};

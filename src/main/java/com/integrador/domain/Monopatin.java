@@ -61,7 +61,7 @@ public class Monopatin implements Serializable{
     private int tiempoPausado; //en segundos
     
     @Column
-    private int cantidadViajes;
+    private Long cantidadViajes;
     
   //  private double longitud; 
 
@@ -80,7 +80,7 @@ public class Monopatin implements Serializable{
         this.tiempoUsoParaMant = request.getTiempoUsoParaMant();
         this.tiempoUsoTotal = request.getTiempoUsoTotal();
         this.tiempoPausado = request.getTiempoPausado();
-        this.cantidadViajes = request.getCantidadViajes();
+        this.cantidadViajes = (long) request.getCantidadViajes();
      //   this.longitud = request.getUbicacion().getLongitud();
     }
     
@@ -175,7 +175,7 @@ public class Monopatin implements Serializable{
 
 
 
-	public void setCantidadViajes(int cantidadViajes) {
+	public void setCantidadViajes(long cantidadViajes) {
 		this.cantidadViajes = cantidadViajes;
 	}
 
@@ -189,7 +189,7 @@ public class Monopatin implements Serializable{
 		return tiempoPausado;
 	}
 
-	public int getCantidadViajes() {
+	public Long getCantidadViajes() {
 		return cantidadViajes;
 	}
 

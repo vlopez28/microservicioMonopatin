@@ -27,7 +27,7 @@ public class MonopatinResponseDto {
 	private final double tiempoUsoParaMant;
 	private final int tiempoUsoTotal;
     private final int tiempoPausado;
-    private final int cantidadViajes;
+    private final Long cantidadViajes;
 	
     
 	public MonopatinResponseDto(Monopatin m ) {
